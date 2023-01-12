@@ -1,0 +1,72 @@
+.heading-2 {
+    background-color: transparent;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#009fe3), to(#dc0d15));
+    background-image: linear-gradient(180deg, #009fe3, #dc0d15);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .blur {
+    backdrop-filter: saturate(200%) blur(30px);
+    background-color: hsla(0, 0%, 100%, 0.8) !important;
+}
+
+.shadow-blur {
+    box-shadow: inset 0 0 1px 1px hsla(0, 0%, 99.6%, 0.9),
+        0 20px 27px 0 rgba(157, 157, 157, 0.528) !important;
+}
+
+.shadow-blur-basic-card {
+    box-shadow: inset 0 0 0px 0px rgba(241, 210, 211, 0.9),
+        0 8px 8px 0 rgba(241, 210, 211, 0.369) !important;
+}
+
+.warning-shadow-blur {
+    box-shadow: inset 0 0 1px 1px rgba(251, 140, 0, 0.9),
+        0 20px 27px 0 rgba(251, 140, 0, 0.528) !important;
+}
+
+.info-shadow-blur {
+    box-shadow: inset 0 0 1px 1px rgba(33, 150, 243, 0.9),
+        0 20px 27px 0 rgba(33, 150, 243, 0.3) !important;
+}
+
+.success-shadow-blur {
+    box-shadow: inset 0 0 0px 0px rgba(84, 178, 86, 0.9),
+    0 4px 4px 0 rgba(84, 178, 84, 0.3) !important;
+}
+
+.info-button-shadow-blur {
+    box-shadow: inset 0 0 0px 0px rgba(33, 150, 200, 0.9),
+    0 4px 4px 0 rgba(33, 150, 200, 0.3) !important;
+}
+
+.gradient-green-button {
+    background: rgb(93,214,28);
+    background: linear-gradient(183deg, rgba(93,214,28,1) 0%, rgba(13,126,53,1) 100%);
+}
+
+.gradient-info-button {
+    background: rgb(28,100,100);
+    background: linear-gradient(183deg, rgba(28,100,100,1) 0%, rgba(14,174,100,1) 100%);
+}
+
+.image-2 {
+    position: fixed;
+    right: -15%;
+}
+
+.grapik {
+    background-image: url('../images/GRAPACEK_palec.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: auto 500px;
+}
+
+/* @media (max-width: 767px) {
+    grapik {
+        background-image: none !important;
+    }
+} */

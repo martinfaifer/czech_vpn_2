@@ -1,0 +1,93 @@
+// Typography
+$font-family-sans-serif: "Roboto", Roboto;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+
+.v-theme--light.background {
+    color: #030B1A;
+}
+// custom props
+.theme--dark.v-application {
+    background-color:#030B1A;
+}
+
+.v-data-table__wrapper > table > tbody > tr:hover {
+    // background:  inherit !important;
+    background-color: inherit  #101B2D;
+  }
+
+.theme--dark.v-menu {
+    color: #192B4B;
+}
+
+.theme--dark.v-navigation {
+    color: linear-gradient(#192B4B,#000000);
+}
+
+.theme--dark.v-card {
+    background-color: #101B2D;
+}
+
+.theme--dark.v-pagination.button {
+    background-color: #101B2D
+}
+
+.theme--dark.shadow-blur {
+    box-shadow: inset 0 0 1px 1px rgba(16, 27, 45, 0.9),
+        0 20px 27px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+
+.theme--dark.shadow-blur-error {
+    box-shadow: inset 0 0 1px 1px rgba(239, 82, 80, 0.9),
+        0 10px 14px 0 rgba(239, 82, 80, 0.3) !important;
+}
+
+.theme--dark.shadow-blur-warning {
+    box-shadow: inset 0 0 1px 1px rgba(251, 140, 0, 0.9),
+        0 10px 14px 0 rgba(251, 140, 0, 0.1) !important;
+}
+
+.theme--dark.shadow-blur-error-alert {
+    box-shadow: inset 0 0 1px 1px rgba(239, 83, 80, 0.9),
+        0 7px 11px 0 rgba(239, 83, 80, 0.2) !important;
+}
+
+.theme--dark.shadow-blur-warning-alert {
+    box-shadow: inset 0 0 1px 1px rgba(230, 81, 0, 0.9),
+        0 7px 6px 0 rgba(230, 80, 0, 0.2) !important;
+}
+
+.theme--dark.shadow-blur-warning-blue-alert {
+    box-shadow: inset 0 0 1px 1px rgba(25, 43, 75, 0.9),
+        0 7px 6px 0 rgba(25, 42, 75, 0.2) !important;
+}
+
+.theme--dark.shadow-blur-warning-green-alert {
+    box-shadow: inset 0 0 1px 1px rgba(30, 135, 74, 0.9),
+        0 20px 16px 0 rgba(48, 164, 96, 0.2) !important;
+}
+
+.theme--dark.v-data-table {
+    background-color: #101B2D;
+}
+
+.them--dark.v-autocomplete {
+    background-color: #101B2D;
+}
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$midnightBlue: #1a212c;
+$linearGradientError: linear-gradient(to right,#FD5D71,#EB0D0E);
+$linearGradientSuccess: linear-gradient(to right,#8EE72E,#20B236);
