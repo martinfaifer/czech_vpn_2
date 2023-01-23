@@ -27,17 +27,17 @@
             max-height="600"
         >
             <div
-                class="d-flex flex-column justify-start fill-height align-start text-white"
+                class="d-flex flex-column justify-start fill-height align-start text-white mt-16"
             >
-                <h1 class="text-h1 font-weight-black mb-4 mt-16 ml-14">
+                <h1 class="text-h2 font-weight-black mb-4 mt-16 ml-16">
                     Czech<span class="text-red">VPN</span>
                 </h1>
-                <h4 class="text-h5 text-white font-weight-bold ml-16">
+                <h4 class="text-h6 text-white font-weight-bold ml-16">
                     Česká VPN pro všechny
                 </h4>
 
                 <v-btn
-                    style="postion: fixed; left: 45%; top: 50%"
+                    style="postion: fixed; left: 45%; top: 40%"
                     rounded="xl"
                     color="#1661BD"
                     class="text-white font-size-bold animate pulse-btn"
@@ -50,16 +50,7 @@
         <v-container fluid>
             <!-- some text section -->
             <v-container fluid>
-                <v-card
-                    flat
-                    style="
-                        background: rgba(204, 204, 204, 0.15);
-                        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-                        backdrop-filter: blur(4.5px);
-                        -webkit-backdrop-filter: blur(4.5px);
-                        border-radius: 10px;
-                    "
-                >
+                <v-card flat color="transparent">
                     <v-card-text>
                         <p class="mb-6 text-center text-h2 font-weight-bold">
                             Nadpis sekce
@@ -311,7 +302,13 @@
     </div>
 </template>
 <script>
+import { useDisplay } from "vuetify";
 export default {
+    setup() {
+        const { mobile } = useDisplay();
+
+        return { mobile };
+    },
     data: () => ({
         icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     }),

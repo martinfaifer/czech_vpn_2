@@ -17839,7 +17839,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/lib/composables/display.mjs");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  setup: function setup() {
+    var _useDisplay = (0,vuetify__WEBPACK_IMPORTED_MODULE_0__.useDisplay)(),
+      mobile = _useDisplay.mobile;
+    return {
+      mobile: mobile
+    };
+  },
   data: function data() {
     return {
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
@@ -17896,15 +17905,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "d-flex flex-column justify-start fill-height align-start text-white"
+  "class": "d-flex flex-column justify-start fill-height align-start text-white mt-16"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-h1 font-weight-black mb-4 mt-16 ml-14"
+  "class": "text-h2 font-weight-black mb-4 mt-16 ml-16"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Czech"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-red"
 }, "VPN")], -1 /* HOISTED */);
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
-  "class": "text-h5 text-white font-weight-bold ml-16"
+  "class": "text-h6 text-white font-weight-bold ml-16"
 }, " Česká VPN pro všechny ", -1 /* HOISTED */);
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mb-6 text-center text-h2 font-weight-bold"
@@ -17973,7 +17982,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         style: {
           "postion": "fixed",
           "left": "45%",
-          "top": "50%"
+          "top": "40%"
         },
         rounded: "xl",
         color: "#1661BD",
@@ -18005,13 +18014,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
             flat: "",
-            style: {
-              "background": "rgba(204, 204, 204, 0.15)",
-              "box-shadow": "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-              "backdrop-filter": "blur(4.5px)",
-              "-webkit-backdrop-filter": "blur(4.5px)",
-              "border-radius": "10px"
-            }
+            color: "transparent"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {

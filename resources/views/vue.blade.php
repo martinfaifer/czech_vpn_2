@@ -41,12 +41,12 @@
     var options = {
         particleColor: "rgba(7,180,246)",
         lineColor: "rgba(7,180,219)",
-        particleAmount: 100,
-        defaultRadius: 2,
-        variantRadius: 2,
+        particleAmount: 60,
+        defaultRadius: 3,
+        variantRadius: 3,
         defaultSpeed: 1,
         variantSpeed: 1,
-        linkRadius: 200
+        linkRadius: 150
     };
 
     var rgb = options.lineColor.match(/\d+/g);
