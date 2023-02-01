@@ -18,12 +18,16 @@ Route::prefix('login')->group(function () {
     Route::post('', [AuthController::class, 'login']);
 });
 
-Route::prefix('customer')->group(function () {
-    Route::get('{user}', [CustomerInformationController::class, 'show']);
-    Route::post('', [CustomerInformationController::class, 'create']);
-    Route::patch('{user}', [CustomerInformationController::class, 'update']);
-    Route::delete('{user}', [CustomerInformationController::class, 'destroy']);
-    Route::prefix('vpn')->group(function () {
-        Route::get('{user}', [CustomerVpnController::class, 'show']);
+Route::middleware("auth")->group(function () {
+
+    Route::prefix('customer')->group(function () {
+        Route::get('{user}', [CustomerInformationController::class, 'show']);
+        Route::post('', [CustomerInformationController::class, 'create']);
+        Route::patch('{user}', [CustomerInformationController::class, 'update']);
+        Route::delete('{user}', [CustomerInformationController::class, 'destroy']);
+        Route::prefix('vpn')->group(function () {
+            // Route::get('{user}', [CustomerVpnController::class, 'show']);
+            Route::patch('{user}', [CustomerVpnController::class, 'update']);
+        });
     });
 });

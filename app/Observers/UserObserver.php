@@ -20,7 +20,7 @@ class UserObserver
             userId: $user->id,
             username: $username,
             password: $password,
-            speed_profile: "1M_Profile" // toto se musí upravit, protože statická zavislost je špatně
+            speed_profile: "20m/20m" // toto se musí upravit, protože statická zavislost je špatně ....  20 základ a 50, 100
         );
 
         // send welcome email

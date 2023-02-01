@@ -9,6 +9,8 @@ class Radreply extends Model
 {
     protected $table = 'radreply';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'username',
         'attribute',

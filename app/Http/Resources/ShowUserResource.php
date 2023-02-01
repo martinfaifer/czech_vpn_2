@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Radcheck;
+use App\Models\Radreply;
+use App\Models\UsersRadcheck;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,26 +18,40 @@ class ShowUserResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = Auth::user();
 
-        // if (Auth::user()->id != $this->id) {
+        // if (is_null($user) || Auth::user()->id != $this->id) {
         //     return abort(403);
         // }
 
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'user_type' => $this->user_type,
+            'user_type' => $this->user_type->type,
+            'vpn' => $this->get_vpn_credentials($this->id)
         ];
     }
 
-    protected function get_vpn_credentials($vpns)
+    protected function get_vpn_credentials($user_id)
     {
-        if (count($vpns) == 0) {
-            return [];
+        $vpnData = [];
+        $pivotUser = UsersRadcheck::where('user_id', $user_id)->first();
+        // vyhledání v radcheck pro získání username a psw
+        $radcheckData = Radcheck::find($pivotUser->radcheck_id);
+        foreach (Radcheck::where('username', $radcheckData->username)->get() as $radcheck) {
+            $vpnData['username'] = $radcheck->username;
+
+            if ($radcheck->attribute === 'ClearText-Password') {
+                $vpnData['password'] = $radcheck->value;
+            }
         }
 
-        foreach ($vpns[0] as $vpn) {
-            return $vpn;
+        foreach (Radreply::where('username', $radcheckData->username)->get() as $radreply) {
+            if ($radreply->attribute === 'Mikrotik-Rate-Limit') {
+                $vpnData['speed'] = $radreply->value;
+            }
         }
+
+        return $vpnData;
     }
 }
