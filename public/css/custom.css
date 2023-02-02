@@ -85,3 +85,24 @@
     top: 0%;
     position: fixed;
 }
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+
+
+.rounded-main-content {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+

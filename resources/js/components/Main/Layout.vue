@@ -9,6 +9,10 @@
             "
             flat
         >
+            <v-app-bar-title>
+                <span class="text-white">Czech</span
+                ><span class="text-red">VPN</span>
+            </v-app-bar-title>
             <template v-slot:append>
                 <v-btn
                     variant="flat"
@@ -20,286 +24,249 @@
                 >
             </template>
         </v-app-bar>
-        <v-parallax
-            src="images/network.jpg"
-            scale="0.5"
-            class="mt-n16"
+        <v-img
+            src="images/Global_network_generated.jpg"
+            cover
+            :aspect-ratio="aspectRatio"
             max-height="600"
+            class="mt-n16"
         >
-            <div
-                class="d-flex flex-column justify-start fill-height align-start text-white mt-16"
-            >
-                <h1 class="text-h2 font-weight-black mb-4 mt-16 ml-16">
-                    Czech<span class="text-red">VPN</span>
-                </h1>
-                <h4 class="text-h6 text-white font-weight-bold ml-16">
-                    Česká VPN pro všechny
-                </h4>
+            <v-container fluid class="mt-16">
+                <v-col cols="12" sm="12" md="4" lg="4">
+                    <p class="text-h3 font-weight-bold text-white text-start">
+                        Czech<span class="text-red">VPN</span>
+                    </p>
 
-                <v-btn
-                    style="postion: fixed; left: 45%; top: 40%"
-                    rounded="xl"
-                    color="#1661BD"
-                    class="text-white font-size-bold animate pulse-btn"
-                >
-                    Pořídit službu
-                    <v-icon class="mx-auto"> mdi-arrow-right </v-icon>
-                </v-btn>
-            </div>
-        </v-parallax>
-        <v-container fluid>
-            <!-- some text section -->
-            <v-container fluid>
-                <v-card flat color="transparent">
-                    <v-card-text>
-                        <p class="mb-6 text-center text-h2 font-weight-bold">
-                            Nadpis sekce
-                        </p>
-                        <p class="text-h6">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit. Duis ante orci, molestie vitae vehicula
-                            venenatis, tincidunt ac pede. Fusce nibh. Nam quis
-                            nulla. Nullam sapien sem, ornare ac, nonummy non,
-                            lobortis a enim. In sem justo, commodo ut, suscipit
-                            at, pharetra vitae, orci. Quisque tincidunt
-                            scelerisque libero. Donec vitae arcu. Quisque porta.
-                            Maecenas sollicitudin. Curabitur vitae diam non enim
-                            vestibulum interdum. Nullam at arcu a est
-                            sollicitudin euismod. Nam quis nulla. Nulla turpis
-                            magna, cursus sit amet, suscipit a, interdum id,
-                            felis. Aliquam erat volutpat. Aenean placerat.
-                            Phasellus faucibus molestie nisl. Fusce consectetuer
-                            risus a nunc. Nulla quis diam. Itaque earum rerum
-                            hic tenetur a sapiente delectus, ut aut reiciendis
-                            voluptatibus maiores alias consequatur aut
-                            perferendis doloribus asperiores repellat. Praesent
-                            vitae arcu tempor neque lacinia pretium. In dapibus
-                            augue non sapien. Fusce aliquam vestibulum ipsum.
-                            Nullam sapien sem, ornare ac, nonummy non, lobortis
-                            a enim. Integer vulputate sem a nibh rutrum
-                            consequat. Aenean placerat. Phasellus rhoncus. Nunc
-                            auctor. Aenean vel massa quis mauris vehicula
-                            lacinia. Curabitur sagittis hendrerit ante. Aliquam
-                            ornare wisi eu metus. Nulla pulvinar eleifend sem.
-                            Integer vulputate sem a nibh rutrum consequat.
-                        </p>
-                    </v-card-text>
-                </v-card>
+                    <p class="text-h5 text-white text-start my-6">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing
+                        elit. Nam quis nulla. Phasellus enim erat, vestibulum
+                        vel, aliquam a, posuere eu, velit. Pellentesque ipsum.
+                        Integer imperdiet lectus quis justo. Aenean vel massa
+                        quis mauris vehicula lacinia. Duis sapien nunc, commodo
+                        et, interdum suscipit, sollicitudin et, dolor. Mauris
+                        metus. Fusce suscipit libero eget elit. Nullam rhoncus
+                        aliquam metus.
+                    </p>
+                </v-col>
+
+                <div class="d-flex flex-column-reverse mb-6">
+                    <v-col cols="12" sm="12" md="12" lg="12">
+                        <v-btn
+                            style="postion: fixed; left: 45%; top: 40%"
+                            rounded="xl"
+                            color="green-darken-4"
+                            class="text-white font-size-bold animate pulse-btn"
+                        >
+                            Pořídit službu
+                            <v-icon class="mx-auto"> mdi-arrow-right </v-icon>
+                        </v-btn>
+                    </v-col>
+                </div>
             </v-container>
-            <!-- cards -->
+        </v-img>
+        <!-- some text section -->
+
+        <v-card flat color="white" class="hidden rounded-t-xl mt-n8">
             <v-container fluid>
-                <v-row>
-                    <v-col cols="12" sm="12" md="4" lg="4">
-                        <v-card
-                            style="
-                                background: rgba(204, 204, 204, 0.15);
-                                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-                                backdrop-filter: blur(4.5px);
-                                -webkit-backdrop-filter: blur(4.5px);
-                                border-radius: 10px;
-                            "
-                            flat
-                        >
-                            <v-card-title
-                                class="text-center text-white"
-                                style="
-                                        background: rgba(3, 100, 125, 0.85);
-                                            rgba(3, 100, 125, 0.37);
-                                        backdrop-filter: blur(4.5px);
-                                        -webkit-backdrop-filter: blur(4.5px);
-                                    "
-                                color="white"
-                            >
-                                titulek karty
-                            </v-card-title>
-                            <v-card-text>
-                                <v-container fluid>
-                                    <p
-                                        class="text-center text-subtitle-1 font-weight-bold"
-                                    >
-                                        Quisque porta. Morbi leo mi, nonummy
-                                        eget tristique non, rhoncus non leo.
-                                        Nullam sit amet magna in magna gravida
-                                        vehicula. Integer tempor. Duis sapien
-                                        nunc, commodo et, interdum suscipit,
-                                        sollicitudin et, dolor. Nullam dapibus
-                                        fermentum ipsum. Aliquam id dolor.
-                                        Nullam rhoncus aliquam metus. Nunc
-                                        tincidunt ante vitae massa. Nullam
-                                        rhoncus aliquam metus. Nulla pulvinar
-                                        eleifend sem. Nunc auctor. Donec ipsum
-                                        massa, ullamcorper in, auctor et,
-                                        scelerisque sed, est. Mauris dictum
-                                        facilisis augue. Nulla est. Praesent
-                                        vitae arcu tempor neque lacinia pretium.
-                                        Phasellus faucibus molestie nisl.
-                                    </p>
-                                </v-container>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="12" sm="12" md="4" lg="4">
-                        <v-card
-                            flat
-                            style="
-                                background: rgba(204, 204, 204, 0.15);
-                                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-                                backdrop-filter: blur(4.5px);
-                                -webkit-backdrop-filter: blur(4.5px);
-                                border-radius: 10px;
-                            "
-                        >
-                            <v-card-title
-                                class="text-center text-white"
-                                style="
-                                        background: rgba(3, 100, 125, 0.85);
-                                            rgba(3, 100, 125, 0.37);
-                                        backdrop-filter: blur(4.5px);
-                                        -webkit-backdrop-filter: blur(4.5px);
-                                    "
-                                color="white"
-                            >
-                                titulek karty s img
-                            </v-card-title>
-                            <v-card-text>
-                                <v-container fluid>
-                                    <v-row
-                                        class="d-flex align-center justify-center"
-                                    >
-                                        <v-col cols="12" sm="12" md="3" lg="3">
-                                            <v-img
-                                                src="images/shield.png"
-                                                alt=""
-                                            >
-                                            </v-img>
-                                        </v-col>
-                                        <v-col cols="12" sm="12" md="9" lg="9">
-                                            <p
-                                                class="text-center text-subtitle-1 font-weight-bold"
-                                            >
-                                                Quisque porta. Morbi leo mi,
-                                                nonummy eget tristique non,
-                                                rhoncus non leo. Nullam sit amet
-                                                magna in magna gravida vehicula.
-                                                Integer tempor. Duis sapien
-                                                nunc, commodo et, interdum
-                                                suscipit, sollicitudin et,
-                                                dolor. Nullam dapibus fermentum
-                                                ipsum. Aliquam id dolor. Nullam
-                                                rhoncus aliquam metus. Nunc
-                                                tincidunt ante vitae massa.
-                                                Nullam rhoncus aliquam metus.
-                                                Nulla pulvinar eleifend sem.
-                                                Nunc auctor. Donec ipsum massa,
-                                                ullamcorper in, auctor et,
-                                                scelerisque sed, est. Mauris
-                                                dictum facilisis augue. Nulla
-                                                est. Praesent vitae arcu tempor
-                                                neque lacinia pretium. Phasellus
-                                                faucibus molestie nisl.
-                                            </p>
-                                        </v-col>
-                                    </v-row>
-                                </v-container>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                    <v-col cols="12" sm="12" md="4" lg="4">
-                        <v-card
-                            flat
-                            style="
-                                background: rgba(204, 204, 204, 0.15);
-                                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-                                backdrop-filter: blur(4.5px);
-                                -webkit-backdrop-filter: blur(4.5px);
-                                border-radius: 10px;
-                            "
-                        >
-                            <v-card-title
-                                class="text-center text-white"
-                                style="
-                                        background: rgba(3, 100, 125, 0.85);
-                                            rgba(3, 100, 125, 0.37);
-                                        backdrop-filter: blur(4.5px);
-                                        -webkit-backdrop-filter: blur(4.5px);
-                                    "
-                                color="white"
-                            >
-                                titulek karty s form
-                            </v-card-title>
-                            <v-card-text>
-                                <v-container fluid>
-                                    <v-col cols="12" sm="12" md="12" lg="12">
-                                        <v-text-field
-                                            autofocus
-                                            variant="outlined"
-                                            label="Nějaký text"
-                                            required
-                                        ></v-text-field>
+                <!-- where is -->
+                <v-col cols="12" sm="12" md="12" lg="12" class="mt-16">
+                    <v-card class="hidden" flat>
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="12" md="6" lg="6">
+                                        <v-img
+                                            src="images/earth_2.jpg"
+                                            class="rounded-xl"
+                                        ></v-img>
                                     </v-col>
                                     <v-col
                                         cols="12"
-                                        class="d-flex justify-space-between"
+                                        sm="12"
+                                        md="6"
+                                        lg="6"
+                                        class="flex-column-reverse"
                                     >
-                                        <v-btn
-                                            variant="flat"
-                                            rounded="md"
-                                            color="red-darken-3"
-                                            class="text-white font-weight-black"
-                                            >Zavřít</v-btn
+                                        <p
+                                            class="text-center text-h3 font-weight-medium"
                                         >
-                                        <v-btn
-                                            variant="flat"
-                                            rounded="md"
-                                            class="text-white font-weight-black"
-                                            color="green-darken-3"
-                                            >Odeslat</v-btn
+                                            Dostupnost
+                                        </p>
+                                        <p
+                                            class="text-center text-subtitle-1 my-8"
                                         >
+                                            Lorem ipsum dolor sit amet,
+                                            consectetuer adipiscing elit. Nam
+                                            quis nulla. Phasellus enim erat,
+                                            vestibulum vel, aliquam a, posuere
+                                            eu, velit. Pellentesque ipsum.
+                                            Integer imperdiet lectus quis justo.
+                                            Aenean vel massa quis mauris
+                                            vehicula lacinia. Duis sapien nunc,
+                                            commodo et, interdum suscipit,
+                                            sollicitudin et, dolor. Mauris
+                                            metus. Fusce suscipit libero eget
+                                            elit. Nullam rhoncus aliquam metus.
+                                        </p>
+                                        <div class="d-flex justify-center">
+                                            <v-btn
+                                                color="rgba(13,126,53,1)"
+                                                class="mt-8 rounded-xl"
+                                                height="50px"
+                                            >
+                                                <p
+                                                    class="text-center text-white mx-2"
+                                                    style="
+                                                        font-weight: bold;
+                                                        font-size: 16px;
+                                                    "
+                                                >
+                                                    Získat CzechVPN
+                                                    <v-icon class="ml-2">
+                                                        mdi-arrow-right
+                                                    </v-icon>
+                                                </p>
+                                            </v-btn>
+                                        </div>
                                     </v-col>
-                                </v-container>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                </v-row>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <!-- security -->
+                <v-col cols="12" sm="12" md="12" lg="12">
+                    <v-card class="hidden" flat style="margin-top: 150px">
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                        sm="12"
+                                        md="6"
+                                        lg="6"
+                                        class="flex-column-reverse"
+                                    >
+                                        <p
+                                            class="text-center text-h3 font-weight-medium"
+                                        >
+                                            Bezpečnost
+                                        </p>
+                                        <p
+                                            class="text-center text-subtitle-1 my-8"
+                                        >
+                                            Lorem ipsum dolor sit amet,
+                                            consectetuer adipiscing elit. Nam
+                                            quis nulla. Phasellus enim erat,
+                                            vestibulum vel, aliquam a, posuere
+                                            eu, velit. Pellentesque ipsum.
+                                            Integer imperdiet lectus quis justo.
+                                            Aenean vel massa quis mauris
+                                            vehicula lacinia. Duis sapien nunc,
+                                            commodo et, interdum suscipit,
+                                            sollicitudin et, dolor. Mauris
+                                            metus. Fusce suscipit libero eget
+                                            elit. Nullam rhoncus aliquam metus.
+                                        </p>
+                                    </v-col>
+                                    <v-col cols="12" sm="12" md="6" lg="6">
+                                        <v-img
+                                            src="images/vpn.webp"
+                                            class="rounded-xl"
+                                        ></v-img>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <!-- what is -->
+                <v-col cols="12" sm="12" md="12" lg="12" class="mt-16">
+                    <v-card class="hidden" flat style="margin-top: 150px">
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="12" md="6" lg="6">
+                                        <v-img
+                                            src="images/wp7136151-magnifying-glass-wallpapers.jpg"
+                                            class="rounded-xl"
+                                        ></v-img>
+                                    </v-col>
+                                    <v-col
+                                        cols="12"
+                                        sm="12"
+                                        md="6"
+                                        lg="6"
+                                        class="flex-column-reverse"
+                                    >
+                                        <p
+                                            class="text-center text-h3 font-weight-medium"
+                                        >
+                                            Co je VPN
+                                        </p>
+                                        <p
+                                            class="text-center text-subtitle-1 my-8"
+                                        >
+                                            Lorem ipsum dolor sit amet,
+                                            consectetuer adipiscing elit. Nam
+                                            quis nulla. Phasellus enim erat,
+                                            vestibulum vel, aliquam a, posuere
+                                            eu, velit. Pellentesque ipsum.
+                                            Integer imperdiet lectus quis justo.
+                                            Aenean vel massa quis mauris
+                                            vehicula lacinia. Duis sapien nunc,
+                                            commodo et, interdum suscipit,
+                                            sollicitudin et, dolor. Mauris
+                                            metus. Fusce suscipit libero eget
+                                            elit. Nullam rhoncus aliquam metus.
+                                        </p>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <!-- easy to setup -->
             </v-container>
-            <!-- footer -->
-        </v-container>
-        <v-container fluid>
-            <v-footer
-                color="transparent"
-                class="text-center font-weight-medium d-flex flex-column"
-            >
-                <div>
-                    <v-btn
-                        v-for="icon in icons"
-                        :key="icon"
-                        class="mx-4"
-                        :icon="icon"
-                        variant="text"
-                    ></v-btn>
-                </div>
+        </v-card>
 
-                <div class="pt-0">
-                    Phasellus feugiat arcu sapien, et iaculis ipsum elementum
-                    sit amet. Mauris cursus commodo interdum. Praesent ut risus
-                    eget metus luctus accumsan id ultrices nunc. Sed at orci sed
-                    massa consectetur dignissim a sit amet dui. Duis commodo
-                    vitae velit et faucibus. Morbi vehicula lacinia malesuada.
-                    Nulla placerat augue vel ipsum ultrices, cursus iaculis dui
-                    sollicitudin. Vestibulum eu ipsum vel diam elementum tempor
-                    vel ut orci. Orci varius natoque penatibus et magnis dis
-                    parturient montes, nascetur ridiculus mus.
-                </div>
-
-                <v-divider></v-divider>
-
-                <div>
-                    {{ new Date().getFullYear() }} —
-                    <strong>CzechVPN</strong>
-                </div>
-            </v-footer>
-        </v-container>
+        <!-- footer -->
     </div>
+    <v-container fluid>
+        <v-footer
+            color="transparent"
+            class="text-center font-weight-medium d-flex flex-column"
+        >
+            <div>
+                <v-btn
+                    v-for="icon in icons"
+                    :key="icon"
+                    class="mx-4"
+                    :icon="icon"
+                    variant="text"
+                ></v-btn>
+            </div>
+
+            <div class="pt-0">
+                Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit
+                amet. Mauris cursus commodo interdum. Praesent ut risus eget
+                metus luctus accumsan id ultrices nunc. Sed at orci sed massa
+                consectetur dignissim a sit amet dui. Duis commodo vitae velit
+                et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat
+                augue vel ipsum ultrices, cursus iaculis dui sollicitudin.
+                Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci
+                varius natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus.
+            </div>
+
+            <v-divider></v-divider>
+
+            <div>
+                {{ new Date().getFullYear() }} —
+                <strong>CzechVPN</strong>
+            </div>
+        </v-footer>
+    </v-container>
 </template>
 <script>
 import { useDisplay } from "vuetify";
@@ -311,6 +278,7 @@ export default {
     },
     data: () => ({
         icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+        aspectRatio: "16 / 9",
     }),
 };
 </script>
