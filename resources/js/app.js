@@ -19,6 +19,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import App from "./App.vue";
 
 import Layout from "./components/Main/Layout.vue";
+import CustomerLogin from "./components/Login/CustomerLogin.vue";
+import Registration from "./components/Registration/Registration.vue";
+import CustomerZone from "./components/Zones/CustomerZone.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -27,6 +30,21 @@ const router = createRouter({
             path: "/",
             name: "Layout",
             component: Layout,
+        },
+        {
+            path: "/login",
+            name: "customerLogin",
+            component: CustomerLogin,
+        },
+        {
+            path: "/registration",
+            name: "registration",
+            component: Registration,
+        },
+        {
+            path: "/customer",
+            name: "customerZone",
+            component: CustomerZone,
         },
     ],
 });

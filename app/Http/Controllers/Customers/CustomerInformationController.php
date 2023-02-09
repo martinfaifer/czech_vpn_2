@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Auth;
 
 class CustomerInformationController extends Controller
 {
-    public function show(User $user): ShowUserResource
+    public function show(): ShowUserResource
     {
-        return new ShowUserResource($user);
+        return new ShowUserResource([]);
     }
 
     public function create(CreateCustomerUserRequest $request, CreateCustomerUserAction $createCustomerUserAction): Object|array
@@ -33,12 +33,9 @@ class CustomerInformationController extends Controller
             : $this->error_response("Nepodařilo se provést změny");
     }
 
-    public function destroy(User $user, DeleteCustomeruserAction $deleteCustomeruserAction)
+    public function destroy(DeleteCustomeruserAction $deleteCustomeruserAction)
     {
-        $authUser = Auth::user();
-        if (is_null($authUser) || $authUser->id != $user->id) {
-            return abort(403);
-        }
+        $user = Auth::user();
 
         return $deleteCustomeruserAction->execute($user) == true
             ? $this->success_response("Odebráno")

@@ -14,7 +14,8 @@ class CreateCustomerUserAction
                 'name' => $formData->name,
                 'email' => $formData->email,
                 'password' => bcrypt($formData->password),
-                'user_type_id' => UserType::CUSTOMER
+                'user_type_id' => UserType::CUSTOMER,
+                'variable_symbol' => random_int(100, 999999)
             ]);
         } catch (\Throwable $th) {
             return [

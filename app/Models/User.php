@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,8 +24,26 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user_type_id'
+        'user_type_id',
+        'variable_symbol',
+        'product_id',
+        'is_deleted'
     ];
+
+    public function vpn_product(): BelongsTo
+    {
+        return $this->belongsTo(VpnSpeedProduct::class, 'id');
+    }
+
+    public function is_waiting_for_payment(): BelongsTo
+    {
+        return $this->belongsTo(UserWaitingOnChange::class, 'user_id', 'id');
+    }
+
+    public function payment(): HasMany
+    {
+        return $this->hasMany(CustomerPayments::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,6 +62,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_deleted' => 'boolean'
     ];
 
     public function user_type(): BelongsTo

@@ -13,7 +13,7 @@
         ]) !!};
     </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script defer src="js/custom.js"></script>
+    <script defer src="{{ asset('js/custom. js') }}"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -27,12 +27,13 @@
             display: inline !important;
         }
     </style>
+
+    @paddleJS
 </head>
 
 <body>
     {{-- <canvas id="canvas"> </canvas> --}}
     <v-app id="app">
-        <router-view></router-view>
     </v-app>
 </body>
 

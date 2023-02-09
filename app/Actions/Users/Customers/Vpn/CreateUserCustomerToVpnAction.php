@@ -10,6 +10,11 @@ class CreateUserCustomerToVpnAction
 {
     public function execute(int $userId, string $username, string $password, string $speed_profile): bool
     {
+
+        if (UsersRadcheck::where('user_id', $userId)->first()) {
+            return false;
+        }
+
         try {
             $radcheckUserWithPassword = $this->create_to_radcheck_user_with_password(username: $username, password: $password);
             $this->create_user_id_and_radcheck_id_to_pivot_table(user_id: $userId, radcheck_id: $radcheckUserWithPassword->id);
@@ -46,6 +51,7 @@ class CreateUserCustomerToVpnAction
 
     protected function create_user_id_and_radcheck_id_to_pivot_table(int $user_id, int $radcheck_id): void
     {
+
         UsersRadcheck::create([
             'user_id' => $user_id,
             'radcheck_id' => $radcheck_id

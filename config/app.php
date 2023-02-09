@@ -125,6 +125,23 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Bank keys
+    |--------------------------------------------------------------------------
+    |
+    | This keys are used for definition of bank connection and payment
+    |
+    */
+
+    'payment_currency' => env('PAYMENT_CURRENCY', null),
+
+    'payment_bank_number' => env('PAYMENT_BANK_NUMBER', null),
+
+    'payment_bank_iban' => env('PAYMENT_BANK_IBAN', null),
+
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -194,6 +211,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
     ],
 
