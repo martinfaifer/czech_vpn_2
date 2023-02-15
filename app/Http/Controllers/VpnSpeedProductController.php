@@ -16,11 +16,11 @@ class VpnSpeedProductController extends Controller
         return new IndexVpnSpeedProductsResource([]);
     }
 
-    public function change_product(UserPaymentRequest $request, ChangeProductAction $changeProductAction)
-    {
-        $qr = $changeProductAction->execute(Auth::user(), $request);
-        return $qr == false
-            ? $this->error_response("Již máte objednanou službu, čeká se na přijetí platby.")
-            : $this->success_response($qr);
-    }
+    // public function update(UserPaymentRequest $request, User $user, ChangeProductAction $changeProductAction)
+    // {
+    //     $customerVpnData = $changeProductAction->execute($user, $request->vpn_speed_products_id);
+    //     return $customerVpnData == false
+    //         ? $this->api_error_response("Nepodařilo se změnit")
+    //         : $this->api_sucess_response($customerVpnData);
+    // }
 }

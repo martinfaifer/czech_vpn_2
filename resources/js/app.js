@@ -20,8 +20,10 @@ import App from "./App.vue";
 
 import Layout from "./components/Main/Layout.vue";
 import CustomerLogin from "./components/Login/CustomerLogin.vue";
-import Registration from "./components/Registration/Registration.vue";
-import CustomerZone from "./components/Zones/CustomerZone.vue";
+// import Registration from "./components/Registration/Registration.vue";
+// import CustomerZone from "./components/Zones/CustomerZone.vue";
+
+import ManagementLogin from "./components/Management/Login/ManagementLogin.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -36,15 +38,20 @@ const router = createRouter({
             name: "customerLogin",
             component: CustomerLogin,
         },
+        // {
+        //     path: "/registration",
+        //     name: "registration",
+        //     component: Registration,
+        // },
+        // {
+        //     path: "/customer",
+        //     name: "customerZone",
+        //     component: CustomerZone,
+        // },
         {
-            path: "/registration",
-            name: "registration",
-            component: Registration,
-        },
-        {
-            path: "/customer",
-            name: "customerZone",
-            component: CustomerZone,
+            path: "/management/login",
+            name: "managementLogin",
+            component: ManagementLogin,
         },
     ],
 });

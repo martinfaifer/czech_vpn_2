@@ -28,4 +28,22 @@ class Controller extends BaseController
             'message' => $message
         ];
     }
+
+    public function api_sucess_response($payload): array
+    {
+        return [
+            'status' => 'success',
+            'time' => now(),
+            'data' => $payload
+        ];
+    }
+
+    public function api_error_response($payload): array
+    {
+        return [
+            'status' => 'error',
+            'time' => now(),
+            'data' => $payload
+        ];
+    }
 }

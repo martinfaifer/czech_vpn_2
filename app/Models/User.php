@@ -27,12 +27,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'user_type_id',
         'variable_symbol',
         'product_id',
-        'is_deleted'
+        'is_deleted',
+        'isp_id'
     ];
 
     public function vpn_product(): BelongsTo
     {
-        return $this->belongsTo(VpnSpeedProduct::class, 'id');
+        return $this->belongsTo(VpnSpeedProduct::class, 'product_id');
     }
 
     public function is_waiting_for_payment(): BelongsTo

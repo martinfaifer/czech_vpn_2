@@ -26,5 +26,11 @@ class UserTypeSeed extends Seeder
                 'type' => "customer"
             ]);
         }
+
+        if(!UserType::whereType('generate_by_api')->first()) {
+            UserType::create([
+                'type' => "generate_by_api"
+            ]);
+        }
     }
 }

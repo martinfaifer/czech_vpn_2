@@ -2,29 +2,37 @@
 
 namespace App\Actions\Users\Customers\Vpn\Products;
 
-use App\Actions\Payment\GenerateQrAction;
-use App\Models\UserWaitingOnChange;
+use App\Models\Radcheck;
+use App\Models\Radreply;
 use Defr\QRPlatba\QRPlatba;
+use App\Models\UsersRadcheck;
 use App\Models\VpnSpeedProduct;
+use App\Models\UserWaitingOnChange;
+use App\Actions\Payment\GenerateQrAction;
+use App\Http\Resources\ShowApiVpnCustomerResource;
 
 class ChangeProductAction
 {
-    public function execute(object $user, $formData): bool|string
+    public function execute(object $user, int $vpn_speed_products_id): ShowApiVpnCustomerResource| bool
     {
-        if (UserWaitingOnChange::where('user_id', $user->id)->first()) {
-            // nalezen zakazník, který čeká na změnu, vrátit false
+        try {
+            $product = VpnSpeedProduct::find($vpn_speed_products_id);
+
+            $user->update([
+                'product_id' => $vpn_speed_products_id
+            ]);
+
+            // vyhledání vpn profilu
+            $userRadcheck = UsersRadcheck::where('user_id', $user->id)->first();
+            $radcheck = Radcheck::find($userRadcheck->radcheck_id);
+            Radreply::where('username', $radcheck->username)->where('attribute', "Mikrotik-Rate-Limit")->first()->update([
+                'value' => str_replace("Mbps", "m", $product->product_speed)
+            ]);
+
+            return new ShowApiVpnCustomerResource($user);
+        } catch (\Throwable $th) {
+
             return false;
         }
-
-        // get product info
-        $product = VpnSpeedProduct::find($formData->product_id);
-
-        // Store to waiting table
-        UserWaitingOnChange::create([
-            'user_id' => $user->id,
-            'vpn_speed_products_id' => $product->id
-        ]);
-
-        return (new GenerateQrAction())->execute(product: $product, user: $user);
     }
 }

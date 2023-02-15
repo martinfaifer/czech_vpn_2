@@ -10,6 +10,7 @@ use App\Http\Requests\CreateVpnRequest;
 use App\Http\Requests\UpdateCustomerVpnRequest;
 use App\Http\Resources\ShowVpnCustomerResource;
 use App\Actions\Users\Customers\Vpn\Credentials\CreateVpnAccountAction;
+use App\Actions\Users\Customers\Vpn\Credentials\DeleteVpnAccountAction;
 use App\Actions\Users\Customers\Vpn\Credentials\UpdateVpnPasswordAction;
 
 class CustomerVpnController extends Controller
@@ -33,6 +34,15 @@ class CustomerVpnController extends Controller
         // založení vpn
         return $createVpnAccountAction->execute($user, $request) == true
             ? $this->success_response("Děkujeme za vybrání produktu.")
+            : $this->error_response("Bohužel se něco pokazilo, prosím obraťte se na naši podporu.");
+    }
+
+    public function destroy(DeleteVpnAccountAction $deleteVpnAccountAction)
+    {
+        $user = Auth::user();
+
+        return $deleteVpnAccountAction->execute($user) == true
+            ? $this->success_response("Odebráno")
             : $this->error_response("Bohužel se něco pokazilo, prosím obraťte se na naši podporu.");
     }
 }

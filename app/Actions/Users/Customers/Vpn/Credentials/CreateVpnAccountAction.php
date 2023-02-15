@@ -11,7 +11,7 @@ use App\Models\VpnSpeedProduct;
 
 class CreateVpnAccountAction
 {
-    public function execute(object $user, $formData)
+    public function execute(object $user, $formData, bool $sendEmailToCustomer = true, bool $returnBool = true)
     {
         try {
 
@@ -32,12 +32,22 @@ class CreateVpnAccountAction
                 'product_id' => $product->id
             ]);
 
-            // send welcome email
-            Mail::to($user->email)->queue(new SendlWelcomeMail(vpnUsername: $username, vpnPassword: $password));
+            if ($sendEmailToCustomer == true) {
+                // send welcome email
+                Mail::to($user->email)->queue(new SendlWelcomeMail(vpnUsername: $username, vpnPassword: $password));
+            }
 
-            return true;
+            if ($returnBool == true) {
+                return true;
+            }
+
+            return [
+                'id' => $user->id,
+                'vpn_name' => $username,
+                'vpn_password' => $password,
+                'share_key' => ""
+            ];
         } catch (\Throwable $th) {
-
             return false;
         }
     }

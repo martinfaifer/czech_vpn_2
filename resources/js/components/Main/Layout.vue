@@ -14,7 +14,8 @@
                 ><span class="text-red font-weight-bold">VPN</span>
             </v-app-bar-title>
             <template v-slot:append>
-                <v-btn
+                <!-- hidden , waiting for phase 3 -->
+                <!-- <v-btn
                     variant="flat"
                     rounded="md"
                     color="#1661BD"
@@ -22,7 +23,7 @@
                     @click="logInAsCustomer()"
                 >
                     Zákazník</v-btn
-                >
+                > -->
             </template>
         </v-app-bar>
         <v-img
@@ -286,7 +287,8 @@
                                                         >
                                                         měsíčně
                                                     </p>
-                                                    <v-btn
+                                                    <!-- hidden for phase 3 -->
+                                                    <!-- <v-btn
                                                         @click="
                                                             openBuyProduktInfoDialog(
                                                                 product.id,
@@ -309,7 +311,7 @@
                                                             class="mx-auto mt-1"
                                                             >mdi-arrow-right</v-icon
                                                         >
-                                                    </v-btn>
+                                                    </v-btn> -->
                                                 </v-container>
                                             </v-card-text>
                                             <v-card-action> </v-card-action>

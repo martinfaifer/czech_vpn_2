@@ -6,8 +6,9 @@ use App\Models\Radcheck;
 use App\Models\Radreply;
 use App\Models\UsersRadcheck;
 use App\Models\UserWaitingOnChange;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Resources\Json\JsonResource;
+use App\Actions\Users\Customers\Vpn\Credentials\ShowVpnCustomerCredentialsAction;
 
 class ShowUserResource extends JsonResource
 {
@@ -27,37 +28,10 @@ class ShowUserResource extends JsonResource
             'email' => $user->email,
             'user_type' => $user->user_type->type,
             'variable_symbol' => $user->variable_symbol,
-            'vpn' => $this->get_vpn_credentials($user->id),
+            'vpn' => (new ShowVpnCustomerCredentialsAction())->execute($user->id),
             'isWaitingForProductChange' => $this->check_if_customer_waiting_for_product_change($user->id),
             'payments' => $user->payment
         ];
-    }
-
-    protected function get_vpn_credentials($user_id)
-    {
-        $vpnData = [];
-        $pivotUser = UsersRadcheck::where('user_id', $user_id)->first();
-        // vyhledání v radcheck pro získání username a psw
-        if (!$pivotUser) {
-            return [];
-        }
-        $radcheckData = Radcheck::find($pivotUser->radcheck_id);
-
-        foreach (Radcheck::where('username', $radcheckData->username)->get() as $radcheck) {
-            $vpnData['username'] = $radcheck->username;
-
-            if ($radcheck->attribute === 'ClearText-Password') {
-                $vpnData['password'] = $radcheck->value;
-            }
-        }
-
-        foreach (Radreply::where('username', $radcheckData->username)->get() as $radreply) {
-            if ($radreply->attribute === 'Mikrotik-Rate-Limit') {
-                $vpnData['speed'] = $radreply->value;
-            }
-        }
-
-        return $vpnData;
     }
 
     protected function check_if_customer_waiting_for_product_change(int $userId): bool

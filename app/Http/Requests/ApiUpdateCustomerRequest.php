@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserPaymentRequest extends FormRequest
+class ApiUpdateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,16 @@ class UserPaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'vpn_speed_products_id' => ['required', 'exists:vpn_speed_products,id']
+            'name' => ['required', 'string', 'max:250']
         ];
     }
 
     public function messages()
     {
         return [
-            'vpn_speed_products_id.required' => "Vyberte produkt",
-            'vpn_speed_products_id.exists' => "Vámi zvolený produkt neexistuje"
+            'name.required' => "Vyplňte jméno",
+            'name.string' => "Neplatný formát",
+            'name.max' => "Maximální počet znaků je 250"
         ];
     }
 }

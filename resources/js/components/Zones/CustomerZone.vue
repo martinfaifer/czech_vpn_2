@@ -603,6 +603,42 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
+
+                    <v-dialog
+                        persistent
+                        v-model="vpnDeleteDialog"
+                        max-width="600"
+                    >
+                        <v-card class="rounded-lg">
+                            <v-card-text>
+                                <v-container fluid>
+                                    <p
+                                        class="text-center text-red text-body-1 font-weight-medium mt-6"
+                                    >
+                                        Přejete si zrušit predplatné?
+                                    </p>
+                                </v-container>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn
+                                    color="red"
+                                    variant="outlined"
+                                    class="rounded-lg"
+                                    @click="removeVpnAccount()"
+                                    >Odebrat</v-btn
+                                >
+                                <v-spacer> </v-spacer>
+                                <v-btn
+                                    color="green"
+                                    variant="outlined"
+                                    class="rounded-lg"
+                                    @click="closeDialog()"
+                                >
+                                    Ponechat
+                                </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
                 </v-row>
 
                 <!-- snackbar -->
@@ -669,6 +705,22 @@ export default {
             this.vpnDeleteDialog = true;
         },
 
+        removeVpnAccount() {
+            axios.delete("customer/vpn").then((response) => {
+                this.responseData = response.data;
+                if (this.responseData.status == "success") {
+                    this.responseData.color = "green";
+                    this.closeDialog();
+                } else {
+                    this.responseData.color = "red";
+                }
+                this.snackbar = true;
+                setTimeout(() => {
+                    this.responseData = [];
+                }, 5000);
+            });
+        },
+
         openChangeProductDialog() {
             axios.get("vpn/products").then((response) => {
                 this.formData.products = response.data.data;
@@ -697,6 +749,7 @@ export default {
             this.createVpnDialog = false;
             this.products = [];
             this.deleteAccountAlertDialog = false;
+            this.vpnDeleteDialog = false;
             this.index();
         },
 

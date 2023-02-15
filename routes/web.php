@@ -8,10 +8,12 @@ use App\Http\Controllers\Auth\UserPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Customers\CustomerVpnController;
 use App\Http\Controllers\Customers\CustomerInformationController;
+use App\Http\Controllers\Management\ManagementAuthController;
+use App\Http\Controllers\Management\ManagementController;
 
 Route::get('/', function () {
     return view('vue');
-});
+})->name('home');
 
 Route::get('vpn/products', [VpnSpeedProductController::class, 'index']);
 
@@ -20,6 +22,12 @@ Route::prefix('login')->group(function () {
     Route::get('', function () {
         return redirect('/#/login');
     })->name('login');
+
+    Route::get('management', function () {
+        return redirect('/#/management/login');
+    })->name('managementLogin');
+
+    Route::post('management', [ManagementAuthController::class, 'login']);
 
     Route::post('', [AuthController::class, 'login']);
 });
@@ -33,7 +41,7 @@ Route::post('registration', RegistrationController::class);
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect('/');
+    // return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // založení účtu
@@ -51,6 +59,13 @@ Route::middleware(["auth", "verified"])->group(function () {
             Route::post('', [CustomerVpnController::class, 'store']);
             Route::patch('{user}', [CustomerVpnController::class, 'update']);
             Route::post('change/product', [VpnSpeedProductController::class, 'change_product']);
+            Route::delete('', [CustomerVpnController::class, 'destroy']);
         });
+    });
+});
+
+Route::middleware(["isAdmin", "verified"])->group(function () {
+    Route::prefix('management')->group(function () {
+        Route::get('', [ManagementController::class, 'show']);
     });
 });
