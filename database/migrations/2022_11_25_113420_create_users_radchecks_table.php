@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users_radchecks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id');
-            $table->foreignId('radcheck_id')->constrained('radcheck', 'id');
+            $table->foreignId('radcheck_id');
             $table->timestamps();
         });
     }
