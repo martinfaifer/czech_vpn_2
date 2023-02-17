@@ -19,11 +19,13 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import App from "./App.vue";
 
 import Layout from "./components/Main/Layout.vue";
-import CustomerLogin from "./components/Login/CustomerLogin.vue";
+// import CustomerLogin from "./components/Login/CustomerLogin.vue";
 // import Registration from "./components/Registration/Registration.vue";
 // import CustomerZone from "./components/Zones/CustomerZone.vue";
 
 import ManagementLogin from "./components/Management/Login/ManagementLogin.vue";
+
+import ApiDoc from "./components/Api/ApiDoc.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -33,11 +35,11 @@ const router = createRouter({
             name: "Layout",
             component: Layout,
         },
-        {
-            path: "/login",
-            name: "customerLogin",
-            component: CustomerLogin,
-        },
+        // {
+        //     path: "/login",
+        //     name: "customerLogin",
+        //     component: CustomerLogin,
+        // },
         // {
         //     path: "/registration",
         //     name: "registration",
@@ -52,6 +54,11 @@ const router = createRouter({
             path: "/management/login",
             name: "managementLogin",
             component: ManagementLogin,
+        },
+        {
+            path: "/api/doc/:topic?",
+            name: "apiDoc",
+            component: ApiDoc,
         },
     ],
 });

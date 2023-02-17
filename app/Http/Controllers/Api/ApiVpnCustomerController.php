@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\PausedVpn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,7 @@ use App\Http\Resources\ShowApiVpnCustomerResource;
 use App\Actions\Users\Admins\AbortIfIsNotAdminAction;
 use App\Actions\Users\Customers\Vpn\Products\ChangeProductAction;
 use App\Actions\Users\Customers\Vpn\Credentials\CreateVpnAccountAction;
+use App\Actions\Users\Customers\Vpn\Credentials\SaveDeletedDataToTableAction;
 
 class ApiVpnCustomerController extends Controller
 {
@@ -53,18 +55,27 @@ class ApiVpnCustomerController extends Controller
             return abort(401);
         }
 
+        // ověření, zda zákazník je v paused_vpns_table
+        if (PausedVpn::where('user_id', $user->id)->first()) {
+            return $this->api_error_response("Zákazník má pozastavenou službu");
+        }
+
         $customerVpnData = $changeProductAction->execute($user, $request->vpn_speed_products_id);
         return $customerVpnData == false
             ? $this->api_error_response("Nepodařilo se změnit")
             : $this->api_sucess_response($customerVpnData);
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, SaveDeletedDataToTableAction $saveDeletedDataToTableAction)
     {
         (new AbortIfIsNotAdminAction())->execute();
 
         if (Auth::user()->isp_id != $user->isp_id) {
             return abort(401);
         }
+
+        return $saveDeletedDataToTableAction->execute(user: $user) == true
+            ? $this->api_sucess_response("Odebráno")
+            : $this->api_error_response("Nepodařilo se odebrat");
     }
 }
