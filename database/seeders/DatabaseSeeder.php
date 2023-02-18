@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             IspSeed::class,
             UserTypeSeed::class,
             UsersSeed::class,
+            ProductsSeed::class,
             // RadusergroupSeed::class,
             // RadgroupcheckSeed::class,
             // RadgroupreplySeed::class
