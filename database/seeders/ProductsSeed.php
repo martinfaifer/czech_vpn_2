@@ -16,7 +16,7 @@ class ProductsSeed extends Seeder
     public function run()
     {
 
-        if (VpnSpeedProduct::count() != 0) {
+        if (!VpnSpeedProduct::first()) {
 
             VpnSpeedProduct::create([
                 'product_name' => "Základ",
