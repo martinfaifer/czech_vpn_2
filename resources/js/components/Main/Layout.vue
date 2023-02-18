@@ -438,7 +438,7 @@ export default {
     methods: {
         index() {
             axios.get("vpn/products").then((response) => {
-                this.products = response.data.data;
+                this.products = response.data;
             });
         },
 
