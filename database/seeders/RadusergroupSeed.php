@@ -17,24 +17,24 @@ class RadusergroupSeed extends Seeder
     {
         if (!Radusergroup::whereUsername('512k_Profile')->first()) {
             Radusergroup::create([
-                'username' => "512k_Profile",
-                'groupname' => "512k",
+                'username' => "20M_Profile",
+                'groupname' => "20",
                 'priority' => 10
             ]);
         }
 
         if (!Radusergroup::whereUsername('1M_Profile')->first()) {
             Radusergroup::create([
-                'username' => "1M_Profile",
-                'groupname' => "1",
+                'username' => "50M_Profile",
+                'groupname' => "50",
                 'priority' => 10
             ]);
         }
 
         if (!Radusergroup::whereUsername('2M_Profile')->first()) {
             Radusergroup::create([
-                'username' => "2M_Profile",
-                'groupname' => "2M",
+                'username' => "100M_Profile",
+                'groupname' => "100",
                 'priority' => 10
             ]);
         }

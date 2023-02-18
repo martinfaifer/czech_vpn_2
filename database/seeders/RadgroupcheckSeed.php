@@ -17,7 +17,7 @@ class RadgroupcheckSeed extends Seeder
     {
         if (!Radgroupcheck::whereGroupname('512k')->first()) {
             Radgroupcheck::create([
-                'groupname' => "512k",
+                'groupname' => "20",
                 'attribute' => "Framed-Protocol",
                 'op' => "==",
                 'value' => "PPP"
@@ -26,7 +26,7 @@ class RadgroupcheckSeed extends Seeder
 
         if (!Radgroupcheck::whereGroupname('1M')->first()) {
             Radgroupcheck::create([
-                'groupname' => "1M",
+                'groupname' => "50",
                 'attribute' => "Framed-Protocol",
                 'op' => "==",
                 'value' => "PPP"
@@ -35,7 +35,7 @@ class RadgroupcheckSeed extends Seeder
 
         if (!Radgroupcheck::whereGroupname('2M')->first()) {
             Radgroupcheck::create([
-                'groupname' => "2M",
+                'groupname' => "100",
                 'attribute' => "Framed-Protocol",
                 'op' => "==",
                 'value' => "PPP"

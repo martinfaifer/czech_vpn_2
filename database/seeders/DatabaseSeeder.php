@@ -15,10 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            IspSeed::class,
             UserTypeSeed::class,
-            RadusergroupSeed::class,
-            RadgroupcheckSeed::class,
-            RadgroupreplySeed::class
+            UsersSeed::class,
+            // RadusergroupSeed::class,
+            // RadgroupcheckSeed::class,
+            // RadgroupreplySeed::class
         ]);
     }
 }
