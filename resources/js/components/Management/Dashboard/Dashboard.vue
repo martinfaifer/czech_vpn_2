@@ -11,7 +11,7 @@
             <v-app-bar-title @click="goToHome()">
                 <span class="text-blue font-weight-bold">Czech</span
                 ><span class="text-red font-weight-bold">VPN</span>
-                <span class="text-body-2"> - admin zóna</span>
+                <span class="text-body-2"> admin zóna</span>
             </v-app-bar-title>
             <template v-slot:append>
                 <v-menu>
@@ -121,7 +121,17 @@
                                     <tr v-for="item in users" :key="item.email">
                                         <td>{{ item.email }}</td>
                                         <td>
-                                            {{ item.vpn_product.product_speed }}
+                                            <span
+                                                v-if="item.vpn_product != null"
+                                            >
+                                                {{
+                                                    item.vpn_product
+                                                        .product_speed
+                                                }}
+                                            </span>
+                                            <span v-else>
+                                                <!--  -->
+                                            </span>
                                         </td>
                                         <td>
                                             <span
