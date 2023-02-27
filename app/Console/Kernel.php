@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('payment:check')->hourly();
-        $schedule->command('payment:delete_unArrived')->dailyAt("02:00");
+        // $schedule->command('payment:check')->hourly();
+        // $schedule->command('payment:delete_unArrived')->dailyAt("02:00"); //nikdy neaktivovat, dojde k automatickému odmazávání useru
         $schedule->command('users:delete')->monthlyAt("06:00");
     }
 
