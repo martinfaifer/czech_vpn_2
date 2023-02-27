@@ -18,19 +18,15 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->expectsJson()) {
-            return redirect('/#/management/login');
-        }
-
         $user = Auth::user();
         if (is_null($user)) {
-            return redirect('/');
+            abort(403);
         }
 
         if ($user->user_type_id != UserType::ADMIN) {
-            return redirect('/');
+            abort(403);
         }
 
-        return $next;
+        return $next($request);
     }
 }

@@ -23,7 +23,9 @@ import Layout from "./components/Main/Layout.vue";
 // import Registration from "./components/Registration/Registration.vue";
 // import CustomerZone from "./components/Zones/CustomerZone.vue";
 
+// for admins
 import ManagementLogin from "./components/Management/Login/ManagementLogin.vue";
+import DashBoard from "./components/Management/Dashboard/Dashboard.vue";
 
 import ApiDoc from "./components/Api/ApiDoc.vue";
 
@@ -54,6 +56,11 @@ const router = createRouter({
             path: "/management/login",
             name: "managementLogin",
             component: ManagementLogin,
+        },
+        {
+            path: "/management/dashboard",
+            name: "managementDashboard",
+            component: DashBoard,
         },
         {
             path: "/api/doc/:topic?",

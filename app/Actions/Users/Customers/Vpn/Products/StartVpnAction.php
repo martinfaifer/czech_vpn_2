@@ -5,6 +5,7 @@ namespace App\Actions\Users\Customers\Vpn\Products;
 use App\Models\Radcheck;
 use App\Models\PausedVpn;
 use App\Models\UsersRadcheck;
+use App\Models\WaitingOnPause;
 
 class StartVpnAction
 {

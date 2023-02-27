@@ -11,6 +11,7 @@ use App\Http\Requests\StartVpnCustomerStatusRequest;
 use App\Actions\Users\Admins\AbortIfIsNotAdminAction;
 use App\Actions\Users\Customers\Vpn\Products\PauseVpnAction;
 use App\Actions\Users\Customers\Vpn\Products\StartVpnAction;
+use App\Models\WaitingOnPause;
 
 class ApiChangeVpnCustomerStatusController extends Controller
 {
@@ -25,9 +26,15 @@ class ApiChangeVpnCustomerStatusController extends Controller
             return abort(401);
         }
 
-        return $pauseVpnAction->execute($user) == true
-            ? $this->api_sucess_response("Služba zastavena")
-            : $this->api_error_response("Službu se nepodařilo zastavit");
+        try {
+            WaitingOnPause::create([
+                'user_id' => $user->id
+            ]);
+
+            return $this->api_sucess_response("Přidáno do fronty ke změně služby.");
+        } catch (\Throwable $th) {
+            return $this->api_error_response("Již je ve frontě ke změně služby.");
+        }
     }
 
     public function start(StartVpnCustomerStatusRequest $request, StartVpnAction $startVpnAction)
@@ -39,6 +46,12 @@ class ApiChangeVpnCustomerStatusController extends Controller
         if (Auth::user()->isp_id != $user->isp_id) {
             return abort(401);
         }
+
+        if(!WaitingOnPause::where('user_id', $user->id)->first()) {
+            return $this->api_error_response("Služba není pozastavena");
+        }
+
+        WaitingOnPause::where('user_id', $user->id)->delete();
 
         return $startVpnAction->execute($user) == true
             ? $this->api_sucess_response("Služba spuštěna")

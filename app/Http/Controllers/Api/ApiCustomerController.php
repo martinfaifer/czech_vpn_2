@@ -15,17 +15,18 @@ use App\Http\Resources\ApiIndexCustomerResource;
 use App\Actions\Api\Customer\ApiUpdateCustomerAction;
 use App\Actions\Users\Admins\AbortIfIsNotAdminAction;
 use App\Actions\Api\Customer\ApiDestroyCustomerAction;
+use App\Models\WaitingOnDelete;
 
 class ApiCustomerController extends Controller
 {
-    public function index()
+    public function index(): ApiIndexCustomerResource
     {
         (new AbortIfIsNotAdminAction())->execute();
 
         return new ApiIndexCustomerResource(Auth::user());
     }
 
-    public function create(RegistrationRequest $request, RegistrationAction $registrationAction)
+    public function create(RegistrationRequest $request, RegistrationAction $registrationAction): array
     {
         (new AbortIfIsNotAdminAction())->execute();
 
@@ -44,7 +45,7 @@ class ApiCustomerController extends Controller
         return $this->api_sucess_response($registrationResponse);
     }
 
-    public function show(User $user)
+    public function show(User $user): ApiShowCustomerResource
     {
         (new AbortIfIsNotAdminAction())->execute();
 
@@ -68,7 +69,7 @@ class ApiCustomerController extends Controller
             : $this->api_error_response("Nepodařilo se změnit záznam");
     }
 
-    public function destroy(User $user, ApiDestroyCustomerAction $apiDestroyCustomerAction)
+    public function destroy(User $user)
     {
         (new AbortIfIsNotAdminAction())->execute();
 
@@ -76,8 +77,14 @@ class ApiCustomerController extends Controller
             return abort(401);
         }
 
-        return $apiDestroyCustomerAction->execute($user) == true
-            ? $this->api_sucess_response("Odebráno")
-            : $this->api_error_response("Nepodařilo se odebrat zákzaníka");
+        try {
+            WaitingOnDelete::create([
+                'user_id' => $user->id
+            ]);
+
+            return  $this->api_sucess_response("Přidáno do fronty k odebrání, záznam bude odebrán k 1. dni následujícího měsíce");
+        } catch (\Throwable $th) {
+            return $this->api_error_response("Již čeká na smazání");
+        }
     }
 }

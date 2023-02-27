@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('payment:check')->hourly();
         $schedule->command('payment:delete_unArrived')->dailyAt("02:00");
+        $schedule->command('users:delete')->monthlyAt("06:00");
     }
 
     /**

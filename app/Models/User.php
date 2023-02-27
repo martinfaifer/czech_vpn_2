@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
@@ -74,5 +75,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function vpns(): HasMany
     {
         return $this->hasMany(UsersRadcheck::class, 'user_id', 'id');
+    }
+
+    public function paused_vpn(): HasOne
+    {
+        return $this->hasOne(PausedVpn::class, 'user_id', 'id');
+    }
+
+    public function waiting_on_delete(): HasOne
+    {
+        return $this->hasOne(WaitingOnDelete::class, 'user_id', 'id');
+    }
+
+    public function waiting_for_pause(): HasOne
+    {
+        return $this->hasOne(WaitingOnPause::class, 'user_id', 'id');
     }
 }

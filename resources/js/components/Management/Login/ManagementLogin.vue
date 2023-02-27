@@ -103,7 +103,7 @@ export default {
                 this.customerData = response.data;
 
                 if (this.customerData != "") {
-                    this.$router.push({ name: "managementZone" });
+                    this.$router.push({ name: "managementDashboard" });
                 }
             });
         },
@@ -125,7 +125,7 @@ export default {
                         }, 6000);
                     } else {
                         this.serverResponse = response.data;
-                        this.$router.push({ name: "managementZone" });
+                        this.$router.push({ name: "managementDashboard" });
                     }
                 })
                 .catch((error) => {

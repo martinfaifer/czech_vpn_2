@@ -74,7 +74,7 @@
                         <br />
                         Může nastat situace, kdy se budete snažit upravit nebo
                         založit záznam. Api má v sobě zabudovanou validaci všech
-                        vstupů a při neplatném vstupu nebo záznamu dojde k
+                        vstupů a při neplatném vstupu dojde k
                         návratu ze strany API s chybou
                         <span class="text-red font-weight-bold">422</span> a
                         odpovědí od serveru ve formátu json například:
