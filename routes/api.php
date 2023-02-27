@@ -9,7 +9,6 @@ use App\Http\Controllers\VpnSpeedProductController;
 
 
 Route::prefix('v1')->group(function () {
-    Route::get('vpn/products', [VpnSpeedProductController::class, 'index']);
     Route::middleware('auth.basic')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::prefix('customer')->group(function () {
@@ -21,6 +20,7 @@ Route::prefix('v1')->group(function () {
             });
 
             Route::prefix('vpn')->group(function () {
+                Route::get('products', [VpnSpeedProductController::class, 'index']);
                 Route::prefix('customer')->group(function () {
                     // zobrazení dat o jednom uživately
                     Route::get("{user}", [ApiVpnCustomerController::class, 'show']);
